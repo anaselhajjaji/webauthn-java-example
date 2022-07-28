@@ -1,8 +1,10 @@
-FROM openjdk:17 AS base
+ARG VARIANT=17-bullseye
+
+FROM mcr.microsoft.com/vscode/devcontainers/java:${VARIANT} AS base
 WORKDIR /app
 EXPOSE 8080
 
-FROM openjdk:17 AS build
+FROM mcr.microsoft.com/vscode/devcontainers/java:${VARIANT} AS build
 WORKDIR /src
 COPY . .
 RUN ./mvnw package

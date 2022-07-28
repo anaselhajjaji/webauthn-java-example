@@ -3,6 +3,14 @@
 	"build": {
 		"dockerfile": "Dockerfile",
 		"args": {
+			// Update the VARIANT arg to pick a Java version: 11, 17
+			// Append -bullseye or -buster to pin to an OS version.
+			// Use the -bullseye variants on local arm64/Apple Silicon.
+			"VARIANT": "17-bullseye",
+			// Options
+			"INSTALL_MAVEN": "false",
+			"INSTALL_GRADLE": "false",
+			"NODE_VERSION": "lts/*"
 		}
 	},
 
@@ -19,7 +27,7 @@
 				"vscjava.vscode-java-pack"
 			]
 		}
-	}
+	},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
@@ -28,5 +36,5 @@
 	// "postCreateCommand": "java -version",
 
 	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
-	// "remoteUser": "vscode"
+	"remoteUser": "vscode"
 }
